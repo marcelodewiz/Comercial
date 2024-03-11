@@ -9,15 +9,43 @@ namespace Comercial.API.Controllers;
 [Route("[controller]")]
 public class ClienteController:ControllerBase
 {
-
     [HttpGet]
-    public IActionResult Index([FromServices] DAL<Cliente> dal)
+    public IActionResult Listar(
+        [FromServices] DAL<Cliente> dal, 
+        string nome = null, 
+        string email = null, 
+        string cpf = null,
+        string rg = null)
     {
-        return Ok(dal.Listar());
+        var clientes = dal.Listar();
+
+        if (!string.IsNullOrEmpty(nome))
+        {
+            clientes = clientes.Where(
+                c => c.Nome.ToUpper().Contains(nome.ToUpper()));
+        }
+
+        if (!string.IsNullOrEmpty(email))
+        {
+            clientes = clientes.Where(
+                c => c.Email.ToUpper().Equals(email.ToUpper()));
+        }
+
+        if (!string.IsNullOrEmpty(cpf))
+        {
+            clientes = clientes.Where(c => c.CPF.Equals(cpf));
+        }
+
+        if (!string.IsNullOrEmpty(rg))
+        {
+            clientes = clientes.Where(c => c.RG.Equals(rg));
+        }
+
+        return Ok(clientes);
     }
 
     [HttpPost]
-    public IActionResult AdicionaCliente([FromServices] DAL<Cliente> DAL, [FromBody] ClienteRequest clienteRequest)
+    public IActionResult CriaCliente([FromServices] DAL<Cliente> DAL, [FromBody] ClienteRequest clienteRequest)
     {
         try
         {

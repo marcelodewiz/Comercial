@@ -38,7 +38,7 @@ public class ClienteController:ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public IActionResult RemoveCliente([FromServices] DAL<Cliente> dal, int id)
+    public IActionResult RemoveCliente(int id, [FromServices] DAL<Cliente> dal)
     {
         var cliente = dal.RecuperarPor(a => a.Id == id);
         if(cliente is null)
@@ -47,6 +47,28 @@ public class ClienteController:ControllerBase
         }
         dal.Deletar(cliente);
         return NoContent();
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult AtualizaCliente(int id, [FromServices] DAL<Cliente> dal, [FromBody] ClienteRequest clienteRequest)
+    {
+        var cliente = dal.RecuperarPor(a => a.Id == id);
+        if (cliente is null)
+        {
+            return NotFound();
+        }
+        try
+        {
+            cliente.Nome = clienteRequest.Nome;
+            cliente.Email = clienteRequest.Email;
+            cliente.CPF = clienteRequest.CPF;
+            cliente.RG = clienteRequest.RG;
+            dal.Atualizar(cliente);
+            return Ok(cliente);
+        }catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
 }

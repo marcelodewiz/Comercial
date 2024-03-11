@@ -4,7 +4,7 @@ namespace Comercial.API.Request;
 
 public record ClienteRequest {
     [Required(ErrorMessage = "O campo Nome é obrigatório.")]
-    [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "O campo Nome deve conter apenas letras.")]
+    [RegularExpression(@"[a-zA-Z\s]+", ErrorMessage = "O campo Nome deve conter apenas letras.")]
     [StringLength(100, MinimumLength = 10, ErrorMessage = "O campo Nome deve ter entre 10 e 100 caracteres.")]
     public string Nome { get; set; }
 

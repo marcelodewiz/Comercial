@@ -36,4 +36,17 @@ public class ClienteController:ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
+    [HttpDelete("{id}")]
+    public IActionResult RemoveCliente([FromServices] DAL<Cliente> dal, int id)
+    {
+        var cliente = dal.RecuperarPor(a => a.Id == id);
+        if(cliente is null)
+        {
+            return NotFound();
+        }
+        dal.Deletar(cliente);
+        return NoContent();
+    }
+
 }

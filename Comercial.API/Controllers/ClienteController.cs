@@ -45,18 +45,18 @@ public class ClienteController:ControllerBase
     }
 
     [HttpPost]
-    public IActionResult CriaCliente([FromServices] DAL<Cliente> DAL, [FromBody] ClienteRequest clienteRequest)
+    public IActionResult CriaCliente([FromServices] DAL<Cliente> dal, [FromBody] ClienteRequest clienteRequest)
     {
+        var cliente = new Cliente()
+        {
+            Nome = clienteRequest.Nome,
+            Email = clienteRequest.Email,
+            CPF = clienteRequest.CPF,
+            RG = clienteRequest.RG
+        };
         try
         {
-            var cliente = new Cliente()
-            {
-                Nome = clienteRequest.Nome,
-                Email = clienteRequest.Email,
-                CPF = clienteRequest.CPF,
-                RG = clienteRequest.RG
-            };
-            DAL.Adicionar(cliente);
+            dal.Adicionar(cliente);
             return Ok(cliente);
         }
         catch (Exception ex)
@@ -85,12 +85,14 @@ public class ClienteController:ControllerBase
         {
             return NotFound();
         }
+
+        cliente.Nome = clienteRequest.Nome;
+        cliente.Email = clienteRequest.Email;
+        cliente.CPF = clienteRequest.CPF;
+        cliente.RG = clienteRequest.RG;
+
         try
         {
-            cliente.Nome = clienteRequest.Nome;
-            cliente.Email = clienteRequest.Email;
-            cliente.CPF = clienteRequest.CPF;
-            cliente.RG = clienteRequest.RG;
             dal.Atualizar(cliente);
             return Ok(cliente);
         }catch (Exception ex)

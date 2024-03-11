@@ -6,7 +6,7 @@ namespace Comercial.Shared.Modelos.Modelos;
 public class Contato
 {
     public int Id { get; set; }
-    [MaxLength(10)]
+    [MaxLength(20)]
     public string Tipo { get; set; }
     public int DDD { get; set; }
     [Column(TypeName = "decimal(9,0)")]

@@ -29,12 +29,12 @@ Content-Type: application/json
 {
     "nome": "Joao da Silva",
     "email": "joao@example.com",
-    "cpf": "12345678901",
-    "rg": "12345678"
+    "cpf": "123.456.789-01",
+    "rg": "12.345.678-9"
 }
 ```
 
-PUT /clientes/{id}
+#### PUT /clientes/{id}
 Atualiza as informações de um cliente existente.
 
 ```http
@@ -43,20 +43,20 @@ Content-Type: application/json
 
 {
     "nome": "Joao da Silva",
-    "email": "joao.silva@example.com",
-    "cpf": "12345678901",
-    "rg": "12345678"
+    "email": "joao@example.com",
+    "cpf": "123.456.789-01",
+    "rg": "12.345.678-9"
 }
 ```
-DELETE /clientes/{id}
+#### DELETE /clientes/{id}
 Exclui um cliente existente.
 
 ```http
 DELETE /clientes/1
 ```
 
-Contato
-POST /contatos
+### Contato
+#### POST /contatos
 Adiciona um novo contato.
 
 ```http
@@ -71,7 +71,7 @@ Content-Type: application/json
 }
 ```
 
-PUT /contatos/{id}
+#### PUT /contatos/{id}
 Atualiza as informações de um contato existente.
 
 ```http
@@ -86,15 +86,15 @@ Content-Type: application/json
 }
 ```
 
-DELETE /contatos/{id}
+#### DELETE /contatos/{id}
 Exclui um contato existente.
 
 ```http
 DELETE /contatos/1
 ```
 
-Endereco
-POST /enderecos
+### Endereco
+#### POST /enderecos
 Adiciona um novo endereço.
 
 ```http
@@ -114,7 +114,7 @@ Content-Type: application/json
 }
 ```
 
-PUT /enderecos/{id}
+#### PUT /enderecos/{id}
 Atualiza as informações de um endereço existente.
 
 ```http
@@ -134,7 +134,7 @@ Content-Type: application/json
 }
 ```
 
-DELETE /enderecos/{id}
+#### DELETE /enderecos/{id}
 Exclui um endereço existente.
 ```http
 DELETE /enderecos/1

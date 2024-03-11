@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ComercialContext>();
 builder.Services.AddTransient<DAL<Cliente>>();
 builder.Services.AddTransient<DAL<Contato>>();
+builder.Services.AddTransient<DAL<Endereco>>();
 
 builder.Services.AddControllers().AddJsonOptions(x =>
    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve); ;

@@ -5,23 +5,22 @@ namespace Comercial.Shared.Modelos.Modelos;
 public class Endereco
 {
     public int Id { get; set; }
-    [Required(ErrorMessage = "O campo Tipo é obrigatório.")]
+    [MaxLength(20)]
     public string Tipo { get; set; }
-    [Required(ErrorMessage = "O campo CEP é obrigatório.")]
-    [RegularExpression(@"^\d{5}-\d{3}$", ErrorMessage = "O campo CEP deve estar no formato XXXXX-XXX.")]
+    [MaxLength(20)]
     public string CEP { get; set; }
-    [Required(ErrorMessage = "O campo Logradouro é obrigatório.")]
+    [MaxLength(200)]
     public string Logradouro { get; set; }
-    [Required(ErrorMessage = "O campo Número é obrigatório.")]
     public int Numero { get; set; }
-    [Required(ErrorMessage = "O campo Bairro é obrigatório.")]
+    [MaxLength(100)]
     public string Bairro { get; set; }
+    [MaxLength(100)]
     public string? Complemento { get; set; }
-    [Required(ErrorMessage = "O campo Cidade é obrigatório.")]
+    [MaxLength(100)]
     public string Cidade { get; set; }
-    [Required(ErrorMessage = "O campo Estado é obrigatório.")]
+    [MaxLength(2)]
     public string Estado { get; set; }
+    [MaxLength(100)]
     public string? Referencia { get; set; }
-    [Required(ErrorMessage = "O campo Cliente é obrigatório.")]
     public virtual Cliente Cliente { get; set; }
 }

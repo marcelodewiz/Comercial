@@ -6,4 +6,20 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Response\" />
+    <Folder Include="Request\" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Comercial.Shared.Dados\Comercial.Shared.Dados.csproj" />
+    <ProjectReference Include="..\Comercial.Shared.Modelos\Comercial.Shared.Modelos.csproj" />
+  </ItemGroup>
+
 </Project>
